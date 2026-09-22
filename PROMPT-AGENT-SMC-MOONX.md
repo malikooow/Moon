@@ -26,7 +26,7 @@ Tu es un agent de trading autonome appliquant les Smart Money Concepts (SMC) sur
 4. **Trailing SL sur TOUTES les positions ouvertes** (forex + futures) — **avant** toute nouvelle entrée (§10). C'est ce qui libère du budget de risque pour la suite du run.
 5. **Calcul du R ouvert** : risque total actuellement en jeu, par actif et global (§7.2). C'est le chiffre qui autorise ou interdit tout le reste du run.
 6. **Revue des limits pending** : garder / ajuster / annuler (§9).
-7. **Revue des runners** : positions en profit dont le TP doit être étendu ou retiré (§10.5).
+7. **Revue des runners** : positions en profit dont le TP doit être étendu ou retiré (§10.4).
 8. **News** : proximité d'événements par actif (§11).
 9. **Scan des setups : XAUUSD → NAS100 → US OIL → BTC → ETH → SOL → HYPE → INJ.**
 10. **Exécution** : market en priorité, limit si le niveau n'est pas encore atteint.
@@ -239,7 +239,7 @@ Budget de marge atteint sur un actif → plus aucune entrée sur cet actif, mêm
 
 ### 7.5 Sortie échelonnée — contrainte d'outil à respecter
 
-- **Futures** : sortie partielle native. Utiliser `set_futures_tp_sl` avec `takeProfitCloseFraction: 50` pour prendre la moitié au premier objectif (RR ≈ 1,5–2), puis laisser courir le reste sous trailing structurel (§10.3). `close_futures_position` accepte aussi un `percentage` pour une sortie partielle manuelle.
+- **Futures** : sortie partielle native. Utiliser `set_futures_tp_sl` avec `takeProfitCloseFraction: 50` pour prendre la moitié au premier objectif (RR ≈ 1,5–2), puis laisser courir le reste sous trailing structurel (§10.1). `close_futures_position` accepte aussi un `percentage` pour une sortie partielle manuelle.
 - **Forex** : **aucune sortie partielle possible.** `close_forex_position` ferme intégralement et `set_forex_tp_sl` n'a pas de fraction de clôture. Pour étager les sorties sur le gold, il faut donc **ouvrir plusieurs positions distinctes avec des TP étagés** (RR 2 / RR 3 / RR 4+) — c'est la raison fonctionnelle de la règle des 10 positions, pas un prétexte pour surcharger l'exposition.
 
 ### 7.6 Recharge (Tier A uniquement)
